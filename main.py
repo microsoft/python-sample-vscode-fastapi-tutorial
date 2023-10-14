@@ -1,5 +1,5 @@
 from typing import Dict
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 import redis
 
 from models import ItemPayload
@@ -7,6 +7,11 @@ from models import ItemPayload
 app = FastAPI()
 
 redis_client = redis.StrictRedis(host='0.0.0.0', port=6379, db=0, decode_responses=True)
+
+@app.get("/")
+def home(request: Request) -> dict[str, str]:
+    url = str(request.base_url)
+    return {"message": f"Add /docs to the end of the URL to access the Swagger UI."}
 
 # Route to add an item
 @app.post("/items")
