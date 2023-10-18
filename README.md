@@ -38,7 +38,8 @@ To run this app locally in VS Code on Windows, you can use either [WSL](https://
 
 
 ## Contributing
-Contributions to the sample are welcom!  When submitting changes, also consider submitting matching changes to the tutorial, the source file for which is [tutorial-fastapi.md](https://github.com/Microsoft/vscode-docs/blob/master/docs/python/tutorial-fastapi.md).
+Contributions to the sample are welcome!  When submitting changes, also consider submitting matching changes to the tutorial, the source file for which is [tutorial-fastapi.md](https://github.com/Microsoft/vscode-docs/blob/master/docs/python/tutorial-fastapi.md).
+
 
 Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
