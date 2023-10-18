@@ -1,12 +1,17 @@
-from typing import Dict
-from fastapi import FastAPI, HTTPException
 import redis
+from fastapi import FastAPI, HTTPException, Request
 
 from models import ItemPayload
 
 app = FastAPI()
 
-redis_client = redis.StrictRedis(host='0.0.0.0', port=6379, db=0, decode_responses=True)
+redis_client = redis.StrictRedis(host="0.0.0.0", port=6379, db=0, decode_responses=True)
+
+
+@app.get("/")
+def home() -> dict[str, str]:
+    return {"message": "Add /docs to the end of the URL to access the Swagger UI."}
+
 
 # Route to add an item
 @app.post("/items")
@@ -15,7 +20,7 @@ def add_item(item: ItemPayload) -> dict[str, ItemPayload]:
         raise HTTPException(status_code=400, detail="Quantity must be greater than 0.")
 
     # Check if item already exists
-    item_id_str: str | None = redis_client.hget("item_name_to_id", "item_id")
+    item_id_str: str | None = redis_client.hget("item_name_to_id", item.item_name)
 
     if item_id_str is not None:
         item_id = int(item_id_str)
@@ -54,9 +59,7 @@ def list_items() -> dict[str, list[ItemPayload]]:
     for name, id_str in stored_items.items():
         item_id: int = int(id_str)
 
-        item_name_str: str | None = redis_client.hget(
-            f"item_id:{item_id}", "item_name"
-        )
+        item_name_str: str | None = redis_client.hget(f"item_id:{item_id}", "item_name")
         if item_name_str is not None:
             item_name: str = item_name_str
         else:

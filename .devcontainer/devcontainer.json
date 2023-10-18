@@ -15,10 +15,19 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user -r requirements.txt"
+	"postCreateCommand": "pip3 install --user -r requirements.txt",
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		"vscode": {
+            "extensions": [
+                "ms-python.python",
+                "esbenp.prettier-vscode",
+				"ms-python.black-formatter",
+				"charliermarsh.ruff"
+            ]
+        }
+	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"

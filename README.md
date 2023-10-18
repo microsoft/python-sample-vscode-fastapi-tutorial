@@ -2,6 +2,9 @@
 This sample contains the completed program from the tutorial: [FastAPI in Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-fastapi). Immediate steps are not included. 
 
 ## Run the app using GitHub Codespaces
+[GitHub Codespaces](https://github.com/features/codespaces) provides cloud-powered development environments that work how and where you want it to. To learn how to set up a GitHub Codespace for this repository, check the [documentation](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository).
+
+Once you open this repository in GitHub Codespaces, you can press **F5** to start the debugger and run the application.  
 
 
 ## Run the app locally in VS Code
