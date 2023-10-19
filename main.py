@@ -44,7 +44,7 @@ def add_item(item: ItemPayload) -> dict[str, ItemPayload]:
 
 # Route to list a specific item by id but using Redis
 @app.get("/items/{item_id}")
-def list_item(item_id: int):
+def list_item(item_id: int) -> dict[str, dict[str, str]]:
     if not redis_client.hexists(f"item_id:{item_id}", "item_id"):
         raise HTTPException(status_code=404, detail="Item not found.")
     else:
@@ -88,13 +88,13 @@ def delete_item(item_id: int) -> dict[str, str]:
     else:
         item_name: str | None = redis_client.hget(f"item_id:{item_id}", "item_name")
         redis_client.hdel("item_name_to_id", f"{item_name}")
-        redis_client.hdel(f"item_id:{item_id}", "item_id")
+        redis_client.delete(f"item_id:{item_id}")
         return {"result": "Item deleted."}
 
 
 # Route to remove some quantity of a specific item by id but using Redis
 @app.delete("/items/{item_id}/{quantity}")
-def remove_quantity(item_id: int, quantity: int):
+def remove_quantity(item_id: int, quantity: int) -> dict[str, str]:
     if not redis_client.hexists(f"item_id:{item_id}", "item_id"):
         raise HTTPException(status_code=404, detail="Item not found.")
 
@@ -108,7 +108,7 @@ def remove_quantity(item_id: int, quantity: int):
     if existing_quantity <= quantity:
         item_name: str | None = redis_client.hget(f"item_id:{item_id}", "item_name")
         redis_client.hdel("item_name_to_id", f"{item_name}")
-        redis_client.hdel(f"item_id:{item_id}", "item_id")
+        redis_client.delete(f"item_id:{item_id}", "item_id")
         return {"result": "Item deleted."}
     else:
         redis_client.hincrby(f"item_id:{item_id}", "quantity", -quantity)
