@@ -15,8 +15,6 @@ There are diffent ways you can run this app locally in VS Code depending on your
 ### Windows
 To run this app locally in VS Code on Windows, you can use either [WSL](https://learn.microsoft.com/en-us/windows/wsl/) (Windows Subsystem for Linux) or [Docker](https://www.docker.com/products/docker-desktop). 
 
-
-
 #### Docker Containers
 1. Make sure you have [Docker installed](https://www.docker.com/products/docker-desktop)
 1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) 
@@ -36,10 +34,8 @@ To run this app locally in VS Code on Windows, you can use either [WSL](https://
 1. Select `Venv`, the latest available version of Python and then the `requirements.txt` file to install the dependencies.
 1. Press **F5** to run your application!
 
-
 ## Contributing
 Contributions to the sample are welcome!  When submitting changes, also consider submitting matching changes to the tutorial, the source file for which is [tutorial-fastapi.md](https://github.com/Microsoft/vscode-docs/blob/master/docs/python/tutorial-fastapi.md).
-
 
 Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
