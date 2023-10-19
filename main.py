@@ -1,5 +1,7 @@
+import os
+
 import redis
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 
 from models import ItemPayload
 
@@ -9,8 +11,15 @@ redis_client = redis.StrictRedis(host="0.0.0.0", port=6379, db=0, decode_respons
 
 
 @app.get("/")
-def home() -> dict[str, str]:
-    return {"message": "Add /docs to the end of the URL to access the Swagger UI."}
+def home(request: Request) -> dict[str, str]:
+    url: str = (
+        f"https://{os.getenv('CODESPACE_NAME')}-8000.{os.getenv('GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN')}/"
+        if os.getenv("CODESPACE_NAME")
+        else str(request.base_url)
+    )
+    return {
+        "message": f"Navigate to the following URL to access the Swagger UI: {url}docs"
+    }
 
 
 # Route to add an item
