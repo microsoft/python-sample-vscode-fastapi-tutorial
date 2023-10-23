@@ -14,7 +14,7 @@ def add_item(item_name: str, quantity: int) -> dict[str, ItemPayload]:
         raise HTTPException(status_code=400, detail="Quantity must be greater than 0.")
     # if item already exists, we'll just add the quantity.
     # get all item names
-    items_ids = {item.item_name: item.item_id if item.item_id is not None else 0 for item in grocery_list.values()}
+    items_ids: dict[str, int] = {item.item_name: item.item_id if item.item_id is not None else 0 for item in grocery_list.values()}
     if item_name in items_ids.keys():
         # get index of item.item_name in item_names, which is the item_id
         item_id: int = items_ids[item_name]
