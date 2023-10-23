@@ -48,7 +48,9 @@ def add_item(item_name: str, quantity: int) -> dict[str, ItemPayload]:
         # Create a set so we can search by name too
         redis_client.hset("item_name_to_id", item_name, item_id)
 
-    return {"item": ItemPayload(item_id=item_id, item_name=item_name, quantity=quantity)}
+    return {
+        "item": ItemPayload(item_id=item_id, item_name=item_name, quantity=quantity)
+    }
 
 
 # Route to list a specific item by id but using Redis
