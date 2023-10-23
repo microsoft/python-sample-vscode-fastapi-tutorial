@@ -5,8 +5,6 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      PORT: 8000
 
     steps:
     - name: Checkout code
@@ -15,7 +13,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.11'
 
     - name: Install dependencies
       run: |
@@ -23,4 +21,4 @@ jobs:
         pip install -r requirements.txt
 
     - name: Start the app
-      run: uvicorn main:app --host 0.0.0.0 --port ${{ env.PORT }}
+      run: python app.py
