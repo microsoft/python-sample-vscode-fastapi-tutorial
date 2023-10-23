@@ -6,7 +6,7 @@ click==8.1.7
 cryptography==41.0.4
 fastapi==0.103.2
 h11==0.14.0
-httpcore==0.18.0
+httpcore==1.0.0
 httpx==0.25.0
 idna==3.4
 iniconfig==2.0.0
