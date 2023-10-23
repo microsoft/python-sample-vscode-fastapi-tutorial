@@ -22,6 +22,7 @@
 		"vscode": {
             "extensions": [
                 "ms-python.python",
+				"ms-python.vscode-pylance",
                 "esbenp.prettier-vscode",
 				"ms-python.black-formatter",
 				"charliermarsh.ruff"
