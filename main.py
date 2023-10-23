@@ -36,7 +36,7 @@ def add_item(item_name: str, quantity: int) -> dict[str, ItemPayload]:
         redis_client.hincrby(f"item_id:{item_id}", "quantity", quantity)
     else:
         # Generate an id for the item
-        item_id: int = redis_client.incr("item_id")
+        item_id: int = redis_client.incr("item_ids")
         redis_client.hset(
             f"item_id:{item_id}",
             mapping={
