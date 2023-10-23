@@ -21,4 +21,4 @@ jobs:
         pip install -r requirements.txt
 
     - name: Start the app
-      run: python app.py
+      run: uvicorn main:app --host 0.0.0.0 --port ${{ env.PORT }}
