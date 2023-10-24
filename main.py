@@ -1,10 +1,24 @@
-from fastapi import FastAPI, HTTPException
+import os
+
+from fastapi import FastAPI, HTTPException, Request
 
 from models import ItemPayload
 
 app = FastAPI()
 
 grocery_list: dict[int, ItemPayload] = {}
+
+
+@app.get("/")
+def home(request: Request) -> dict[str, str]:
+    url: str = (
+        f"https://{os.getenv('CODESPACE_NAME')}-8000.{os.getenv('GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN')}/"
+        if os.getenv("CODESPACE_NAME")
+        else str(request.base_url)
+    )
+    return {
+        "message": f"Navigate to the following URL to access the Swagger UI: {url}docs"
+    }
 
 
 # Route to add an item
@@ -14,7 +28,10 @@ def add_item(item_name: str, quantity: int) -> dict[str, ItemPayload]:
         raise HTTPException(status_code=400, detail="Quantity must be greater than 0.")
     # if item already exists, we'll just add the quantity.
     # get all item names
-    items_ids: dict[str, int] = {item.item_name: item.item_id if item.item_id is not None else 0 for item in grocery_list.values()}
+    items_ids: dict[str, int] = {
+        item.item_name: item.item_id if item.item_id is not None else 0
+        for item in grocery_list.values()
+    }
     if item_name in items_ids.keys():
         # get index of item_name in item_ids, which is the item_id
         item_id: int = items_ids[item_name]
