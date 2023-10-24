@@ -23,4 +23,11 @@ jobs:
         pip install -r requirements.txt
 
     - name: Start the app
-      run: uvicorn main:app --host 0.0.0.0 --port ${{ env.PORT }}
+      run: uvicorn main:app --host 0.0.0.0 --port ${{ env.PORT }} &
+    
+    - name: Sleep for 1 minute
+      run: sleep 60
+
+    - name: Stop the app
+      run: pkill -f 'uvicorn main:app'
+
