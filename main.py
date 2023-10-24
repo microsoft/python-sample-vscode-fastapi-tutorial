@@ -16,12 +16,12 @@ def add_item(item_name: str, quantity: int) -> dict[str, ItemPayload]:
     # get all item names
     items_ids: dict[str, int] = {item.item_name: item.item_id if item.item_id is not None else 0 for item in grocery_list.values()}
     if item_name in items_ids.keys():
-        # get index of item.item_name in item_names, which is the item_id
+        # get index of item_name in item_ids, which is the item_id
         item_id: int = items_ids[item_name]
         grocery_list[item_id].quantity += quantity
     # otherwise, create a new item
     else:
-        # generate an id for the item based on the highest ID in the grocery_list
+        # generate an ID for the item based on the highest ID in the grocery_list
         item_id: int = max(grocery_list.keys()) + 1 if grocery_list else 0
         grocery_list[item_id] = ItemPayload(
             item_id=item_id, item_name=item_name, quantity=quantity
