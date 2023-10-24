@@ -5,7 +5,9 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    env:
+      PORT: 8000
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
