@@ -33,7 +33,7 @@ def add_item(item_name: str, quantity: int) -> dict[str, ItemPayload]:
 
     if item_id_str is not None:
         item_id = int(item_id_str)
-        redis_client.hincrby(f"item_id:{item_id}", "quantity", quantity)
+        quantity = redis_client.hincrby(f"item_id:{item_id}", "quantity", quantity)
     else:
         # Generate an id for the item
         item_id: int = redis_client.incr("item_ids")
