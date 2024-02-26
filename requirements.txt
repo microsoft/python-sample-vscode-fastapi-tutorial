@@ -3,7 +3,7 @@ anyio==3.7.1
 cffi==1.16.0
 click==8.1.7
 cryptography==41.0.4
-fastapi==0.104.0
+fastapi==0.110.0
 h11==0.14.0
 idna==3.4
 pycparser==2.21
