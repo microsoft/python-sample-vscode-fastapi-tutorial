@@ -21,7 +21,8 @@
 				"ms-python.vscode-pylance",
 				"esbenp.prettier-vscode",
 				"ms-python.black-formatter",
-				"charliermarsh.ruff"
+				"charliermarsh.ruff",
+				"ms-python.debugpy"
 			]
 		}
 	}
