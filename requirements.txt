@@ -1,5 +1,5 @@
 annotated-types==0.6.0
-anyio==3.7.1
+anyio==4.15.1
 cffi==1.16.0
 click==8.1.7
 cryptography==41.0.4
